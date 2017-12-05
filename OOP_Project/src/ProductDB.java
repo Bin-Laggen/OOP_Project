@@ -1,84 +1,24 @@
-import java.util.ArrayList;
 
-public class ProductDB {
-	
-	private ArrayList<Product> list;
-	private int noOfItems;
-	
+
+public class ProductDB extends ObjectList {
+		
 	ProductDB()
 	{
-		list = new ArrayList<Product>();
+		super();
 	}
 	
-	public boolean isEmpty()
+	public Product getProduct(int index)
 	{
-		if(noOfItems == 0)
-		{
-			System.out.println("List is empty");
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	public boolean add(Product object)
-	{
-		list.add(object);
-		noOfItems++;
-		System.out.println(object.toString() + " has been added");
-		return true;
-	}
-	
-	public boolean remove(int index)
-	{
-		if(!isEmpty())
-		{
-			System.out.println(list.get(index).toString() + " removed");
-			list.remove(index);
-			noOfItems--;
-			return true;
-		}
-		else
-		{
-			System.out.println("List empty - object not removed");
-			return false;
-		}
-	}
-		
-	public int getTotal()
-	{
-		return noOfItems;
-	}
-	
-	public Product getObject(int index)
-	{
-		return list.get(index);
-	}
-	
-	
-	public boolean clear()
-	{
-		if(!isEmpty())
-		{
-			list.clear();
-			this.noOfItems = 0;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return (Product) super.getObject(index);
 	}
 	
 	public Product searchByID(int id)
 	{
 		int i = 0;
 		boolean found = false;
-		while(!found && i < noOfItems)
+		while(!found && i < super.getNoOfItems())
 		{
-			if(list.get(i).getProductID() == id)
+			if(((Product) super.getList().get(i)).getProductID() == id)
 			{
 				found = true;
 			}
@@ -89,7 +29,7 @@ public class ProductDB {
 		}
 		if(found)
 		{
-			return list.get(i);
+			return (Product) super.getList().get(i);
 		}
 		else
 		{
@@ -97,13 +37,4 @@ public class ProductDB {
 			return null;
 		}
 	}
-	
-	public void print()
-	{
-		for(int i = 0; i < noOfItems; i++)
-		{
-			System.out.println(list.get(i).toString());
-		}
-	}
-
 }
