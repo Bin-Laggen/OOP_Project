@@ -49,7 +49,8 @@ public class TV extends Product {
 
 	public String toString()
 	{
-		String output = "\n\tMake: " + this.make
+		String output = "\n\tID: " + this.getProductID()
+				+ "\n\tMake: " + this.make
 				+ "\n\tType: " + this.tvType
 				+ "\n\tSize: " + this.size + "\""
 				+ "\n\t3D Capable: " + this.capable3D;

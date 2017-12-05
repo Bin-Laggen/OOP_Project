@@ -46,7 +46,7 @@ public class Test {
 		Mary.printAllOrders();
 		System.out.println("Tom's Order");
 		Tom.printOrder(0);
-		System.out.println("Tom's All Orders	");
+		System.out.println("Tom's All Orders");
 		Tom.printAllOrders();
 		
 		byte choice = 0;
@@ -116,7 +116,6 @@ public class Test {
 		int storage = readIntegerInput(0, Integer.MAX_VALUE);
 		Phone tmp = new Phone(name, desc, price, make, model, storage);
 		DB.add(tmp);
-		System.out.println(tmp.toString() + " has been added successfully");
 		return tmp;
 		
 	}
@@ -127,7 +126,9 @@ public class Test {
 		System.out.println("Enter customer name: ");
 		String custName = readString();
 		Customer cust = null;
+		Product tmp = null;
 		
+		int quantity;
 		int i = 0;
 		boolean found = false;
 		while(!found && i < custList.size())
@@ -172,10 +173,16 @@ public class Test {
 							switch(choiceNo2)
 							{
 							case 1:
-								ord.add(createPhone(DB));
+								tmp = createPhone(DB);
+								System.out.println("Enter Quantity: ");
+								quantity = readIntegerInput(1, Integer.MAX_VALUE);
+								ord.add(tmp, quantity);
 								break;
 							case 2:
-								ord.add(createTV(DB));
+								tmp = createTV(DB);
+								System.out.println("Enter Quantity: ");
+								quantity = readIntegerInput(1, Integer.MAX_VALUE);
+								ord.add(tmp, quantity);
 								break;
 							}
 						}
@@ -183,8 +190,10 @@ public class Test {
 						break;
 					case 2:
 						System.out.println("Enter ProductID: ");
-						Product tmp = DB.searchByID(readIntegerInput(1, Integer.MAX_VALUE));
-						ord.add(tmp);
+						tmp = DB.searchByID(readIntegerInput(1, Integer.MAX_VALUE));
+						System.out.println("Enter Quantity: ");
+						quantity = readIntegerInput(1, Integer.MAX_VALUE);
+						ord.add(tmp, quantity);
 						break;
 					}
 
@@ -231,7 +240,6 @@ public class Test {
 		int size = readIntegerInput(0, Integer.MAX_VALUE);
 		TV tmp = new TV(name, desc, price, make, capable3D, type, size);
 		DB.add(tmp);
-		System.out.println(tmp.toString() + " has been added successfully");
 		return tmp;
 	}
 	

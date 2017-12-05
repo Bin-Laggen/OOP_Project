@@ -38,7 +38,8 @@ public class Phone extends Product{
 	
 	public String toString()
 	{
-		String output =	"\n\tMake: " + this.make
+		String output =	"\n\tID: " + this.getProductID()
+				+ "\n\tMake: " + this.make
 				+ "\n\tModel: " + this.model
 				+ "\n\tStorage Capacity: " + this.storage + "GB";
 		return output;
