@@ -10,9 +10,15 @@ public class OrderDetails {
 		this.quantity = inQuantity;
 	}
 	
+	public String toString()
+	{
+		String output = "\tProduct: " + product.getName()
+		+ "\n\tQuantity: " + quantity;
+		return output;
+	}
+	
 	public void print()
 	{
-		System.out.println("Product: " + product.getName()
-							+ "\nQuantity: " + quantity);
+		System.out.println(toString());
 	}
 }

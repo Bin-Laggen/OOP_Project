@@ -19,7 +19,7 @@ public class Order extends ObjectList{
 	{
 		for(int i = 0; i < super.getTotal(); i++)
 		{
-			System.out.println(super.getObject(i));
+			System.out.println((OrderDetails) super.getObject(i));
 		}	
 	}
 

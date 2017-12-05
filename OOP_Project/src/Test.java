@@ -39,12 +39,14 @@ public class Test {
 		o.add(p, 0);
 		Tom.addOrder(o);
 		
-		System.out.println("Order Prints");
+		System.out.println("\nOrder Prints");
 		System.out.println("Mary's Order");
 		Mary.printOrder(0);
+		System.out.println("Mary's All Orders");
 		Mary.printAllOrders();
 		System.out.println("Tom's Order");
 		Tom.printOrder(0);
+		System.out.println("Tom's All Orders	");
 		Tom.printAllOrders();
 		
 		byte choice = 0;
@@ -256,6 +258,7 @@ public class Test {
 		
 		if(found)
 		{
+			
 			cust.printAllOrders();
 		}
 		else
