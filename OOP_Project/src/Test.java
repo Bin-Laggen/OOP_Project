@@ -17,8 +17,8 @@ public class Test {
 		
 		System.out.println("Database Adds");
 		ProductDB database = new ProductDB();
-		database.add(p1);
 		database.add(p);
+		database.add(p1);
 		database.add(t);
 		database.add(t1);
 		
