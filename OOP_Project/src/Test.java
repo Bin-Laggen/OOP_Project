@@ -7,11 +7,11 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Customer> customers = new ArrayList<Customer>();
-		
 				//--------------------------//
 				//------TEST BASIC OPS------//
 				//--------------------------//
+		
+		ArrayList<Customer> customers = new ArrayList<Customer>();
 		
 		Phone p = new Phone("Apple iPhone 6", "iPhone 6 Description", 400, "Apple", "iPhone 6", 64); // all parameters not shown 
 		Phone p1 = new Phone("Samsung", "Galaxy S8 Description", 800, "Samsung", "Galaxy S8", 128); 
