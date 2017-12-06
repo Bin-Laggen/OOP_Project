@@ -50,9 +50,9 @@ public class Product {
 	{
 		String output = "Product Details"
 				+ "\n---------------"
+				+ "\n\tProductID: " + this.productID
 				+ "\n\tName: " + this.name
 				+ "\n\tDescription: " + this.description
-				+ "\n\tProductID: " + this.productID
 				+ "\n\tPrice: €" + this.price;
 		return output;
 	}

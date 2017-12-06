@@ -9,9 +9,9 @@ public class Test {
 		
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		
-		//------------------//
-		//--TEST BASIC OPS--//
-		//------------------//
+				//--------------------------//
+				//------TEST BASIC OPS------//
+				//--------------------------//
 		
 		Phone p = new Phone("Apple iPhone 6", "iPhone 6 Description", 400, "Apple", "iPhone 6", 64); // all parameters not shown 
 		Phone p1 = new Phone("Samsung", "Galaxy S8 Description", 800, "Samsung", "Galaxy S8", 128); 
@@ -53,9 +53,9 @@ public class Test {
 		System.out.println("Tom's All Orders");
 		Tom.printAllOrders();
 		
-		//------------------//
-		//----TEST  MENU----//
-		//------------------//
+				//----------------------//
+				//------TEST  MENU------//
+				//----------------------//
 		
 		byte choice = 0;
 		boolean run = true;
@@ -111,6 +111,10 @@ public class Test {
 
 	}
 	
+				//-------------------------//
+				//------CREATE PHONE-------//
+				//-------------------------//
+	
 	public static Phone createPhone(ProductDB DB)
 	{
 		System.out.println("Enter phone details below");
@@ -131,6 +135,10 @@ public class Test {
 		return tmp;
 		
 	}
+	
+				//-------------------------//
+				//------CREATE ORDER-------//
+				//-------------------------//
 	
 	public static void createOrder(ArrayList<Customer> custList, ProductDB DB)
 	{
@@ -196,11 +204,21 @@ public class Test {
 						}
 						break;
 					case 2:
-						System.out.println("Enter ProductID: ");
-						tmp = DB.searchByID(readIntegerInput(1, Integer.MAX_VALUE));
-						System.out.println("Enter Quantity: ");
-						quantity = readIntegerInput(0, Integer.MAX_VALUE);
-						ord.add(tmp, quantity);
+						System.out.println("Enter ProductID (-1 to display all products): ");
+						int id = readIntegerInput(-1, Integer.MAX_VALUE);
+						if(id == -1)
+						{
+							DB.print();
+							System.out.println("Enter ProductID (-1 to display all products): ");
+							id = readIntegerInput(1, Integer.MAX_VALUE);
+						}
+						tmp = DB.searchByID(id);
+						if(tmp != null)
+						{
+							System.out.println("Enter Quantity: ");
+							quantity = readIntegerInput(0, Integer.MAX_VALUE);
+							ord.add(tmp, quantity);
+						}
 						break;
 					}
 
@@ -235,6 +253,10 @@ public class Test {
 		}
 	}
 	
+				//----------------------//
+				//------CREATE TV-------//
+				//----------------------//
+	
 	public static TV createTV(ProductDB DB)
 	{
 		System.out.println("Enter TV details below");
@@ -257,6 +279,10 @@ public class Test {
 		DB.add(tmp);
 		return tmp;
 	}
+	
+				//------------------------//
+				//------VIEW ORDERS-------//
+				//------------------------//
 	
 	public static void viewOrders(ArrayList<Customer> custList)
 	{
@@ -296,6 +322,10 @@ public class Test {
 		}
 	}
 	
+				//---------------------//
+				//------READ INT-------//
+				//---------------------//
+	
 	private static int readIntegerInput(int minValue, int maxValue) 
 	{
 		int choice = 0;
@@ -325,6 +355,10 @@ public class Test {
 		while(!ok);
 		return choice;
 	}
+	
+				//------------------------//
+				//------READ STRING-------//
+				//------------------------//
 	
 	public static String readString()
 	{
