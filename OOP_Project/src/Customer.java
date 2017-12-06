@@ -40,9 +40,21 @@ public class Customer {
 	
 	public boolean addOrder(Order order)
 	{
-		orderList.add(order);
-		noOfOrders++;
-		return true;
+		if(order.getTotal() > 0)
+		{
+			Order newOrder = new Order();
+			for(int i = 0; i < order.getTotal(); i++)
+			{
+				newOrder.add(((OrderDetails) order.getObject(i)).getProduct(), ((OrderDetails) order.getObject(i)).getQuantity());
+			}
+			orderList.add(newOrder);
+			noOfOrders++;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean removeOrder(Order order)

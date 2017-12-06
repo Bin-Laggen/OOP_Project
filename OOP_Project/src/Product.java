@@ -46,13 +46,19 @@ public class Product {
 		this.productID = productID;
 	}
 	
-	public void print()
+	public String toString()
 	{
-		System.out.println("Product Details"
+		String output = "Product Details"
 				+ "\n---------------"
 				+ "\n\tName: " + this.name
 				+ "\n\tDescription: " + this.description
 				+ "\n\tProductID: " + this.productID
-				+ "\n\tPrice: €" + this.price);
+				+ "\n\tPrice: €" + this.price;
+		return output;
+	}
+	
+	public void print()
+	{
+		System.out.println(toString());
 	}
 }

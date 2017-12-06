@@ -9,10 +9,17 @@ public class Order extends ObjectList{
 	
 	public boolean add(Product product, int quantity)
 	{
-		super.getList().add(new OrderDetails(product, quantity));
-		super.setNoOfItems(super.getNoOfItems() + 1);
-		System.out.println(product.toString() + " has been added");
-		return true;
+		if(quantity > 0)
+		{
+			super.getList().add(new OrderDetails(product, quantity));
+			super.setNoOfItems(super.getNoOfItems() + 1);
+			System.out.println(product.toString() + " has been added\n");
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public void printOrder()

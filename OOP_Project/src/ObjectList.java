@@ -45,7 +45,7 @@ public class ObjectList {
 	{
 		list.add(object);
 		noOfItems++;
-		System.out.println(object.toString() + " has been added");
+		System.out.println(object.toString() + " has been added\n");
 		return true;
 	}
 	

@@ -9,6 +9,10 @@ public class Test {
 		
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		
+		//------------------//
+		//--TEST BASIC OPS--//
+		//------------------//
+		
 		Phone p = new Phone("Apple iPhone 6", "iPhone 6 Description", 400, "Apple", "iPhone 6", 64); // all parameters not shown 
 		Phone p1 = new Phone("Samsung", "Galaxy S8 Description", 800, "Samsung", "Galaxy S8", 128); 
 		
@@ -49,6 +53,10 @@ public class Test {
 		System.out.println("Tom's All Orders");
 		Tom.printAllOrders();
 		
+		//------------------//
+		//----TEST  MENU----//
+		//------------------//
+		
 		byte choice = 0;
 		boolean run = true;
 	
@@ -73,6 +81,10 @@ public class Test {
 				if(tmp != null)
 				{
 					System.out.println(tmp.toString());
+				}
+				else
+				{
+					System.out.println("Not Found");
 				}
 				break;
 			case 3:
@@ -163,36 +175,31 @@ public class Test {
 					{
 					case 1:
 						byte choiceNo2 = 0;
-						do
-						{
-							System.out.println("\n1. Create a phone"
-									+ "\n2. Create a tv"
-									+ "\n==> ");
-							choiceNo2 = (byte) readIntegerInput(1, 2);
+						System.out.println("\n1. Create a phone"
+								+ "\n2. Create a tv");
+						choiceNo2 = (byte) readIntegerInput(1, 2);
 
-							switch(choiceNo2)
-							{
-							case 1:
-								tmp = createPhone(DB);
-								System.out.println("Enter Quantity: ");
-								quantity = readIntegerInput(1, Integer.MAX_VALUE);
-								ord.add(tmp, quantity);
-								break;
-							case 2:
-								tmp = createTV(DB);
-								System.out.println("Enter Quantity: ");
-								quantity = readIntegerInput(1, Integer.MAX_VALUE);
-								ord.add(tmp, quantity);
-								break;
-							}
+						switch(choiceNo2)
+						{
+						case 1:
+							tmp = createPhone(DB);
+							System.out.println("Enter Quantity: ");
+							quantity = readIntegerInput(0, Integer.MAX_VALUE);
+							ord.add(tmp, quantity);
+							break;
+						case 2:
+							tmp = createTV(DB);
+							System.out.println("Enter Quantity: ");
+							quantity = readIntegerInput(0, Integer.MAX_VALUE);
+							ord.add(tmp, quantity);
+							break;
 						}
-						while(choiceNo2 > 0 && choiceNo2 < 3);
 						break;
 					case 2:
 						System.out.println("Enter ProductID: ");
 						tmp = DB.searchByID(readIntegerInput(1, Integer.MAX_VALUE));
 						System.out.println("Enter Quantity: ");
-						quantity = readIntegerInput(1, Integer.MAX_VALUE);
+						quantity = readIntegerInput(0, Integer.MAX_VALUE);
 						ord.add(tmp, quantity);
 						break;
 					}
@@ -207,8 +214,14 @@ public class Test {
 
 			}
 			while(inLoop);
-			cust.addOrder(ord);
-			System.out.println("Order added successfully...");
+			if(cust.addOrder(ord))
+			{
+				System.out.println("Order added successfully...");
+			}
+			else
+			{
+				System.out.println("Empty Order - Not Added");
+			}
 		}
 		else
 		{
@@ -232,8 +245,9 @@ public class Test {
 		int price = readIntegerInput(0, Integer.MAX_VALUE);
 		System.out.println("Make: ");
 		String make = readString();
-		System.out.println("3D capable: ");
+		System.out.println("3D capable (True/False): ");
 		boolean capable3D = kb.nextBoolean();
+		kb.nextLine();
 		System.out.println("TV Type: ");
 		String type = readString();
 		System.out.println("Size: ");
@@ -253,7 +267,8 @@ public class Test {
 		boolean found = false;
 		while(!found && i < custList.size())
 		{
-			if(custList.get(i).getName().equals(custName))
+			if(custList.get(i).getName().equalsIgnoreCase
+					(custName))
 			{
 				cust = custList.get(i);
 				found = true;
@@ -320,7 +335,7 @@ public class Test {
 			{
 				System.out.print(" ==> ");
 				input = kb.nextLine();
-				if(input.length() >= 1)
+				if(input.length() > 0)
 				{
 					ok = true;
 				}
