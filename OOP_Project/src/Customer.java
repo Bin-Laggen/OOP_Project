@@ -40,7 +40,7 @@ public class Customer {
 	
 	public boolean addOrder(Order order)
 	{
-		if(order.getTotal() > 0)
+		if(!order.isEmpty())
 		{
 			Order newOrder = new Order();
 			for(int i = 0; i < order.getTotal(); i++)

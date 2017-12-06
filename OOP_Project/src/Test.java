@@ -204,7 +204,8 @@ public class Test {
 						break;
 					}
 
-					System.out.println("Would you like to add another product? (y/n): ");
+					System.out.print("Would you like to add another product? (y/n): "
+							+ "\n ==> ");
 					choiceChar = kb.next().charAt(0);
 				}
 				else
