@@ -12,7 +12,6 @@ public class Order extends ObjectList{
 		if(quantity > 0)
 		{
 			super.getList().add(new OrderDetails(product, quantity));
-			super.setNoOfItems(super.getNoOfItems() + 1);
 			System.out.println(product.toString() + " has been added\n");
 			return true;
 		}

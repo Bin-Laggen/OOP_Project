@@ -148,6 +148,8 @@ public class Test {
 		Customer cust = null;
 		Product tmp = null;
 		
+		//FIND CUSTOMER BY NAME
+		
 		int quantity;
 		int i = 0;
 		boolean found = false;
@@ -164,6 +166,8 @@ public class Test {
 			}
 		}
 		
+		//IF CUSTOMER IS ON THE LIST
+		
 		if(found)
 		{
 			boolean inLoop = true;
@@ -178,9 +182,12 @@ public class Test {
 							+ "\n2. Select items from database");
 
 					choiceNo1 = (byte) readIntegerInput(1, 2);
-
+				
 					switch(choiceNo1)
 					{
+					
+					//ADD ITEM TO DB
+					
 					case 1:
 						byte choiceNo2 = 0;
 						System.out.println("\n1. Create a phone"
@@ -203,7 +210,12 @@ public class Test {
 							break;
 						}
 						break;
+						
+					//SELECT FROM LIST
+						
 					case 2:
+						
+						
 						System.out.println("Enter ProductID (-1 to display all products): ");
 						int id = readIntegerInput(-1, Integer.MAX_VALUE);
 						if(id == -1)
@@ -244,11 +256,23 @@ public class Test {
 		}
 		else
 		{
-			System.out.println("Customer not found. Retry? (y/n) ");
-			char retry = kb.next().charAt(0);
-			if(retry == 'y' || retry == 'Y')
+			System.out.println("Customer not found."
+					+ "\n1. Retry"
+					+ "\n2. Add New Customer"
+					+ "\n3. Return to Menu");
+			byte choiceNo3 = (byte) readIntegerInput(1, 3);
+			
+			switch(choiceNo3)
 			{
+			case 1:
 				createOrder(custList, DB);
+				break;
+			case 2:
+				createCustomer(custList);
+				createOrder(custList, DB);
+				break;
+			case 3:
+				break;
 			}
 		}
 	}
@@ -290,6 +314,8 @@ public class Test {
 		String custName = readString();
 		Customer cust = null;
 		
+		//FIND CUSTOMER BY NAME
+		
 		int i = 0;
 		boolean found = false;
 		while(!found && i < custList.size())
@@ -308,18 +334,46 @@ public class Test {
 		
 		if(found)
 		{
-			
 			cust.printAllOrders();
 		}
 		else
 		{
-			System.out.println("Customer not found. Retry? (y/n) ");
-			char retry = kb.next().charAt(0);
-			if(retry == 'y' || retry == 'Y')
+			System.out.println("Customer not found."
+					+ "\n1. Retry"
+					+ "\n2. Add New Customer"
+					+ "\n3. Return to Menu");
+			byte choiceNo3 = (byte) readIntegerInput(1, 3);
+			
+			switch(choiceNo3)
 			{
+			case 1:
 				viewOrders(custList);
+				break;
+			case 2:
+				createCustomer(custList);
+				viewOrders(custList);
+				break;
+			case 3:
+				break;
 			}
 		}
+	}
+
+				//----------------------------//
+				//------CREATE CUSTOMER-------//
+				//----------------------------//
+	
+	public static boolean createCustomer(ArrayList<Customer> custList)
+	{
+		System.out.println("Enter Customer Details");
+		System.out.println("Name: ");
+		String name = readString();
+		System.out.println("Address: ");
+		String address = readString();
+		Customer cust = new Customer(name, address);
+		custList.add(cust);
+		System.out.println("Customer " + name + " added");
+		return true;
 	}
 	
 				//---------------------//

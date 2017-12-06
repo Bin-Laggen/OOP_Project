@@ -4,12 +4,10 @@ public class ObjectList {
 	
 
 	private ArrayList<Object> list;
-	private int noOfItems;
 
 	public ObjectList()
 	{
 		list = new ArrayList<Object>();
-		noOfItems = 0;
 	}
 
 	public ArrayList<Object> getList() {
@@ -20,17 +18,9 @@ public class ObjectList {
 		this.list = list;
 	}
 
-	public int getNoOfItems() {
-		return noOfItems;
-	}
-
-	public void setNoOfItems(int noOfItems) {
-		this.noOfItems = noOfItems;
-	}
-
 	public boolean isEmpty()
 	{
-		if(noOfItems == 0)
+		if(list.size() == 0)
 		{
 			System.out.println("List is empty");
 			return true;
@@ -44,7 +34,6 @@ public class ObjectList {
 	public boolean add(Product object)
 	{
 		list.add(object);
-		noOfItems++;
 		System.out.println(object.toString() + " has been added\n");
 		return true;
 	}
@@ -55,7 +44,6 @@ public class ObjectList {
 		{
 			System.out.println(list.get(index).toString() + " removed");
 			list.remove(index);
-			noOfItems--;
 			return true;
 		}
 		else
@@ -67,7 +55,7 @@ public class ObjectList {
 		
 	public int getTotal()
 	{
-		return noOfItems;
+		return list.size();
 	}
 	
 	public Object getObject(int index)
@@ -81,7 +69,6 @@ public class ObjectList {
 		if(!isEmpty())
 		{
 			list.clear();
-			this.noOfItems = 0;
 			return true;
 		}
 		else
@@ -92,7 +79,7 @@ public class ObjectList {
 	
 	public void print()
 	{
-		for(int i = 0; i < noOfItems; i++)
+		for(int i = 0; i < list.size(); i++)
 		{
 			System.out.println(list.get(i).toString());
 		}

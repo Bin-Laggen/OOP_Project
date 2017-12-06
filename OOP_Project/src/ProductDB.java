@@ -16,7 +16,7 @@ public class ProductDB extends ObjectList {
 	{
 		int i = 0;
 		boolean found = false;
-		while(!found && i < super.getNoOfItems())
+		while(!found && i < super.getTotal())
 		{
 			if(((Product) super.getList().get(i)).getProductID() == id)
 			{

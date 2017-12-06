@@ -48,7 +48,7 @@ public class Product {
 	
 	public String toString()
 	{
-		String output = "Product Details"
+		String output = "\nProduct Details"
 				+ "\n---------------"
 				+ "\n\tProductID: " + this.productID
 				+ "\n\tName: " + this.name

@@ -4,7 +4,6 @@ public class Customer {
 
 	private String name, address;
 	private ArrayList<Order> orderList;
-	private int noOfOrders;
 	
 	Customer(String inName, String inAddress)
 	{
@@ -35,7 +34,6 @@ public class Customer {
 
 	public void setOrderList(ArrayList<Order> orderList) {
 		this.orderList = orderList;
-		this.noOfOrders = this.orderList.size();
 	}
 	
 	public boolean addOrder(Order order)
@@ -48,7 +46,6 @@ public class Customer {
 				newOrder.add(((OrderDetails) order.getObject(i)).getProduct(), ((OrderDetails) order.getObject(i)).getQuantity());
 			}
 			orderList.add(newOrder);
-			noOfOrders++;
 			return true;
 		}
 		else
@@ -62,7 +59,6 @@ public class Customer {
 		if(orderList.contains(order))
 		{
 			orderList.remove(order);
-			noOfOrders--;
 			return true;
 		}
 		else
@@ -84,11 +80,15 @@ public class Customer {
 	{
 		if(!orderList.isEmpty())
 		{
-			for(int i = 0; i < noOfOrders; i++)
+			for(int i = 0; i < orderList.size(); i++)
 			{
 				System.out.println("Order " + (i + 1));
 				orderList.get(i).printOrder();
 			}
+		}
+		else
+		{
+			System.out.println("No Orders");
 		}
 	}
 }
