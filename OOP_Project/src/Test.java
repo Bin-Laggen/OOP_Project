@@ -140,7 +140,7 @@ public class Test {
 				//------CREATE ORDER-------//
 				//-------------------------//
 	
-	public static void createOrder(ArrayList<Customer> custList, ProductDB DB)
+	public static Order createOrder(ArrayList<Customer> custList, ProductDB DB)
 	{
 		Order ord = new Order();
 		System.out.println("Enter customer name: ");
@@ -275,6 +275,7 @@ public class Test {
 				break;
 			}
 		}
+		return ord;
 	}
 	
 				//----------------------//
@@ -380,7 +381,7 @@ public class Test {
 				//------READ INT-------//
 				//---------------------//
 	
-	private static int readIntegerInput(int minValue, int maxValue) 
+	public static int readIntegerInput(int minValue, int maxValue) 
 	{
 		int choice = 0;
 		boolean ok = false;

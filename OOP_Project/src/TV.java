@@ -22,7 +22,7 @@ public class TV extends Product {
 		this.make = make;
 	}
 
-	public boolean isCapable3D() {
+	public boolean getCapable3D() {
 		return capable3D;
 	}
 
